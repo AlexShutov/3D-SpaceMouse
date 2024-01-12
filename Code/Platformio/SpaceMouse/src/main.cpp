@@ -4,13 +4,24 @@
   #include <avr/power.h>
 #endif
 
+#include <OneButton.h>
+#include <SimpleKalmanFilter.h>
+
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN 16
 
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS 1 // Popular NeoPixel ring size
 
+// лампочка
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+
+// фильтр мышки
+SimpleKalmanFilter xFilter(1, 1, 0.2), yFilter(1, 1, 0.2), zFilter(1, 1, 0.2);
+
+// Кнопки, нужно будет посмотреть, куда точно припаяю
+OneButton button1(27, true);
+OneButton button2(24, true);
 
 void init_serial();
 
@@ -49,6 +60,7 @@ void showColor(uint32_t c) {
     strip.show();
   }
 }
+
 
 // Fill the dots one after the other with a color
 void colorWipe(uint32_t c, uint8_t wait) {
