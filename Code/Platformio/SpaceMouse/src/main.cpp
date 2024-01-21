@@ -5,6 +5,10 @@
 #endif
 
 #include <OneButton.h>
+// todo extract interface
+#include <Tlv493d.h>
+#include <Adafruit_MMC56x3.h>
+
 #include <SimpleKalmanFilter.h>
 
 // Which pin on the Arduino is connected to the NeoPixels?
@@ -15,6 +19,10 @@
 
 // лампочка
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+
+// сенсор
+Tlv493d Tlv493dMagnetic3DSensor = Tlv493d();
+Adafruit_MMC5603 mag = Adafruit_MMC5603(12345);
 
 // фильтр мышки
 SimpleKalmanFilter xFilter(1, 1, 0.2), yFilter(1, 1, 0.2), zFilter(1, 1, 0.2);
