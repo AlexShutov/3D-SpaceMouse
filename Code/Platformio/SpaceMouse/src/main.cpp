@@ -43,9 +43,9 @@ void rainbow(uint8_t wait);
 void setup() {
 
   strip.begin();
-  strip.setBrightness(50);
+  strip.setBrightness(255);
   strip.show(); // Initialize all pixels to 'off'
-  init_serial();
+//   init_serial();
 }
 
 
@@ -56,10 +56,17 @@ void init_serial() {
   }
 }
 
+
 // the loop routine runs over and over again forever:
 void loop() {
   // Some example procedures showing how to display to the pixels:
-  showColor(strip.Color(100, 50, 70));
+  strip.clear();
+  showColor(strip.Color(255, 0, 0));
+  strip.show();
+  delay(100);
+
+  showColor(strip.Color(0, 0, 255));
+  delay(100);
 }
 
 void showColor(uint32_t c) {
