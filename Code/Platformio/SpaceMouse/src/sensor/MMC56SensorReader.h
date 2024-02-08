@@ -17,7 +17,7 @@ extern "C" {
 
 namespace MagneticSensor {
 
-class MMC56SensorReader: MagneticSensorReader {
+class MMC56SensorReader: public MagneticSensorReader {
 
 private: 	
 public:
@@ -25,6 +25,7 @@ public:
 	// TODO: implementations will use default I2C bus address for now
 	virtual bool initSensor(int sensorId, TwoWire* wire = 0);
 	virtual void shutdownSensor();
+	virtual long getMeasurementDurationMillis();
 
 	/**
 	 * Perform sensor calibration (TODO)

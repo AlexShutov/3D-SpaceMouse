@@ -7,7 +7,7 @@ Tlv493d mag = Tlv493d();
 SimpleKalmanFilter xFilter(1, 1, 0.2), yFilter(1, 1, 0.2), zFilter(1, 1, 0.2);
 
 // Setup buttons
-OneButton button1(27, true);
+OneButton button1(27, true);  
 OneButton button2(24, true);
 
 float xOffset = 0, yOffset = 0, zOffset = 0;

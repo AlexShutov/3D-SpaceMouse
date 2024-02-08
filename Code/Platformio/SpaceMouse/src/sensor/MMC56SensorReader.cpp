@@ -9,6 +9,8 @@
 #include <Adafruit_MMC56x3.h>
 #include "MMC56SensorReader.h"
 
+#define MEASUREMENT_DURATION_MILLIS 100
+
 extern "C" {
 };
 
@@ -26,6 +28,10 @@ bool MMC56SensorReader::initSensor(int sensorId, TwoWire* wire) {
 		wire = &Wire;
 	}
 	return driver.begin(MMC56X3_DEFAULT_ADDRESS, wire);
+}
+
+long MMC56SensorReader::getMeasurementDurationMillis() {
+	return MEASUREMENT_DURATION_MILLIS;
 }
 
 void MMC56SensorReader::shutdownSensor() {

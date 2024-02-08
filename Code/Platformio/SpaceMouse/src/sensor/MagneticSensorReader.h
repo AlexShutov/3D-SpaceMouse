@@ -8,6 +8,7 @@
 
 #ifndef __MAGNETIC_SENSOR_READER_H__
 #define __MAGNETIC_SENSOR_READER_H__
+#include <Wire.h>
 #include "SensorReadings.h"
 
 extern "C" {
@@ -26,6 +27,12 @@ public:
 	virtual void shutdownSensor() = 0;
 
 	/**
+	 * Get time required for taking reading from a sensor. TLVD sensor support that, 
+	 * MMC56 uses hardcode empiric value
+	*/
+	virtual long getMeasurementDurationMillis() = 0;
+
+	/**
 	 * Perform sensor calibration (TODO)
 	*/
 	virtual void calibrateSensor() = 0;
@@ -36,7 +43,7 @@ public:
 	
 	MagneticSensorReader();
 	// free some resources
-	virtual ~MagneticSensorReader();
+	virtual ~MagneticSensorReader() = 0;
 
 protected:
 private:
