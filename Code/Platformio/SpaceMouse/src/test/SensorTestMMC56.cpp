@@ -1,52 +1,48 @@
 #include <Arduino.h>
 #include "SensorTestMMC56.h"
 
+
 using namespace SensorTests;
 
 SensorTestMMC56::SensorTestMMC56(){}
 
 SensorTestMMC56::~SensorTestMMC56(){
-    // perhaps won't do anything
-    mmc.reset();
+    sensorReader->shutdownSensor();
 }
 
 void SensorTestMMC56::setup() {
-    mmc = Adafruit_MMC5603(12345);
     initSerial();
 
-        /* Initialise the sensor */
-    if (!mmc.begin(MMC56X3_DEFAULT_ADDRESS, &Wire)) {  // I2C mode
-        /* There was a problem detecting the MMC5603 ... check your connections */
+    mmc56SensorReader = MMC56SensorReader();
+    sensorReader = &mmc56SensorReader;
+
+    bool initSuccessful = sensorReader->initSensor(SENSOR_ID);
+    if (!initSuccessful) {
         Serial.println("Ooops, no MMC5603 detected ... Check your wiring!");
         while (1) delay(10);
     }
+    measurementDurationMillis = sensorReader->getMeasurementDurationMillis();
+}
 
-    /* Display some basic information on this sensor */
-    mmc.printSensorDetails();
+long SensorTestMMC56::getMeasurementDurationMillis() {
+    return measurementDurationMillis;
 }
 
 void SensorTestMMC56::performTest() {
-    // Get a new sensor event 
-    sensors_event_t event;
-    mmc.getEvent(&event);
 
+    SensorReading* flux = sensorReader->getSensorReading();
 
     // Display the results (magnetic vector values are in micro-Tesla (uT))
     Serial.print("X: ");
-    Serial.print(event.magnetic.x);
+    Serial.print(flux->x_value);
     Serial.print("  ");
     Serial.print("Y: ");
-    Serial.print(event.magnetic.y);
+    Serial.print(flux->y_value);
     Serial.print("  ");
     Serial.print("Z: ");
-    Serial.print(event.magnetic.z);
+    Serial.print(flux->z_value);
     Serial.print("  ");
     Serial.println("uT");
-
-    // Read and display temperature
-    float temp_c = mmc.readTemperature();
-    Serial.print("Temp: "); Serial.print(temp_c); Serial.println(" *C");
-    // Delay before the next sample
 }
 
 void SensorTestMMC56::initSerial() {
