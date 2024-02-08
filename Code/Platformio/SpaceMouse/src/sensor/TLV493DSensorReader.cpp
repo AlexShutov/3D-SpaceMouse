@@ -5,6 +5,9 @@
 * Author: Alex
 */
 
+#include "config/hardware_config.h"
+
+#ifdef USE_TLV493D_SENSOR
 #include "TLV493DSensorReader.h"
 
 #define MEASUREMENT_DURATION_MILLIS 100
@@ -53,3 +56,5 @@ SensorReading* TLV493DSensorReader::getSensorReading() {
 	getSensorReading(&currentReading);
 	return &currentReading;
 }
+
+#endif // USE_TLV493D_SENSOR

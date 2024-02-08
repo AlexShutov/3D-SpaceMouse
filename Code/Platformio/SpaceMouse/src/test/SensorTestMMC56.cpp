@@ -1,3 +1,7 @@
+
+#include "config/hardware_config.h"
+#ifdef USE_MMC56_SENSOR
+
 #include <Arduino.h>
 #include "SensorTestMMC56.h"
 
@@ -52,3 +56,5 @@ void SensorTestMMC56::initSerial() {
     Serial.println("Adafruit_MMC5603 Magnetometer Test");
     Serial.println("");
 }
+
+#endif // USE_MMC56_SENSOR

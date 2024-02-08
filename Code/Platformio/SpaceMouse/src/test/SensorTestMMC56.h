@@ -2,6 +2,11 @@
 #include "sensor/MagneticSensorReader.h"
 #include "sensor/MMC56SensorReader.h"
 
+
+#include "config/hardware_config.h"
+
+#ifdef USE_MMC56_SENSOR
+
 #ifndef __SENSOR_TEST_MMC56_H__
 #define __SENSOR_TEST_MMC56_H__
 
@@ -34,3 +39,5 @@ private:
 }
 
 #endif //__SENSOR_TEST_MMC56_H__
+
+#endif // USE_MMC56_SENSOR

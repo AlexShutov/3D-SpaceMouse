@@ -6,6 +6,10 @@
 */
 
 
+#include "config/hardware_config.h"
+
+#ifdef USE_MMC56_SENSOR
+
 #include <Adafruit_MMC56x3.h>
 #include "MMC56SensorReader.h"
 
@@ -54,3 +58,5 @@ SensorReading* MMC56SensorReader::getSensorReading() {
 	
 	return &currentReading;
 }
+
+#endif

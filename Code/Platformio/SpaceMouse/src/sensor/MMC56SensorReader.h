@@ -5,9 +5,12 @@
 * Author: Alex
 */
 
+#include "config/hardware_config.h"
+#ifdef USE_MMC56_SENSOR
 
 #ifndef __MMC56_SENSOR_READER_H__
 #define __MMC56_SENSOR_READER_H__
+
 #include <Adafruit_MMC56x3.h>
 #include "SensorReadings.h"
 #include "MagneticSensorReader.h"
@@ -50,3 +53,5 @@ private:
 
 }
 #endif //__MMC56_SENSOR_READER_H__
+
+#endif //USE_MMC56_SENSOR

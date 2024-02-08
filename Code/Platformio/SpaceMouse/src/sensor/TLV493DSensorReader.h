@@ -5,6 +5,8 @@
 * Author: Alex
 */
 
+#include "config/hardware_config.h"
+#ifdef USE_TLV493D_SENSOR
 
 #ifndef __TLV_493D_SENSOR_READER_H__
 #define __TLV_493D_SENSOR_READER_H__
@@ -48,3 +50,4 @@ private:
 
 }
 #endif //__TLV_493D_SENSOR_READER_H__
+#endif // USE_TLV493D_SENSOR

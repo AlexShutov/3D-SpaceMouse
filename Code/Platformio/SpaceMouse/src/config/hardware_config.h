@@ -1,0 +1,7 @@
+#ifndef HARDWARE_CONFIG
+#define HARDWARE_CONFIG
+
+#define USE_MMC56_SENSOR
+// #define USE_TLV493D_SENSOR
+
+#endif // HARDWARE_CONFIG
