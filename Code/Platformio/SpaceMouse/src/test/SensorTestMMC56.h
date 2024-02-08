@@ -1,6 +1,6 @@
 #include <Adafruit_MMC56x3.h>
 #include "sensor/MagneticSensorReader.h"
-#include "sensor/MMC56SensorReader.h"
+#include "sensor/MMC56/MMC56SensorReader.h"
 
 
 #include "config/hardware_config.h"

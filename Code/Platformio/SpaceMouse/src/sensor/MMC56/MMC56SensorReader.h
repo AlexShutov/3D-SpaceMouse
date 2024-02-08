@@ -12,8 +12,8 @@
 #define __MMC56_SENSOR_READER_H__
 
 #include <Adafruit_MMC56x3.h>
-#include "SensorReadings.h"
-#include "MagneticSensorReader.h"
+#include "sensor/MMC56/MMC56SensorReader.h"
+#include "sensor/MagneticSensorReader.h"
 
 extern "C" {
 };
