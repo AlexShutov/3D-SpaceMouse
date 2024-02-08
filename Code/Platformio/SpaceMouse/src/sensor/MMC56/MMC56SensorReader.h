@@ -35,15 +35,14 @@ public:
 	*/
 	virtual void calibrateSensor();
 	
-
-	virtual void getSensorReading(SensorReading* readingReceiver);
-	virtual SensorReading* getSensorReading();
-	
 	MMC56SensorReader();
 	// free some resources
 	virtual ~MMC56SensorReader();
 
 protected:
+
+	virtual void getSensorReading(SensorReading* readingReceiver);
+
 private:
 	Adafruit_MMC5603 driver;
 	SensorReading currentReading;

@@ -41,20 +41,11 @@ void TLV493DSensorReader::shutdownSensor() {
 	driver.end();
 }
 
-void TLV493DSensorReader::calibrateSensor() {
-	// TODO thought to use initial calibration logic from space mouse sketch
-}
-
 void TLV493DSensorReader::getSensorReading(SensorReading* readingReceiver) {
 	driver.updateData();
 	readingReceiver->x_value = driver.getX();
 	readingReceiver->y_value = driver.getY();
 	readingReceiver->z_value = driver.getZ();
-}
-
-SensorReading* TLV493DSensorReader::getSensorReading() {
-	getSensorReading(&currentReading);
-	return &currentReading;
 }
 
 #endif // USE_TLV493D_SENSOR

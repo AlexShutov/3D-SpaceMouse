@@ -11,8 +11,8 @@
 #ifndef __TLV_493D_SENSOR_READER_H__
 #define __TLV_493D_SENSOR_READER_H__
 #include <Tlv493d.h>
-#include "SensorReadings.h"
-#include "MagneticSensorReader.h"
+#include "sensor/SensorReadings.h"
+#include "sensor/MagneticSensorReader.h"
 
 extern "C" {
 };
@@ -35,7 +35,6 @@ public:
 	virtual void calibrateSensor();
 	
 
-	virtual void getSensorReading(SensorReading* readingReceiver);
 	virtual SensorReading* getSensorReading();
 	
 	TLV493DSensorReader();
@@ -43,6 +42,9 @@ public:
 	virtual ~TLV493DSensorReader();
 
 protected:
+
+	virtual void getSensorReading(SensorReading* readingReceiver);
+
 private:
 	Tlv493d driver;
 	SensorReading currentReading;

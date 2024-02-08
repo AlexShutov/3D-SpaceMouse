@@ -53,10 +53,4 @@ void MMC56SensorReader::getSensorReading(SensorReading* readingReceiver) {
 	readingReceiver->z_value = sensorReading.magnetic.z;
 }
 
-SensorReading* MMC56SensorReader::getSensorReading() {
-	getSensorReading(&currentReading);
-	
-	return &currentReading;
-}
-
 #endif

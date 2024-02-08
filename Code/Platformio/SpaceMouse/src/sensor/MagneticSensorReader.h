@@ -36,17 +36,20 @@ public:
 	 * Perform sensor calibration (TODO)
 	*/
 	virtual void calibrateSensor() = 0;
-	
 
-	virtual void getSensorReading(SensorReading* readingReceiver) = 0;
-	virtual SensorReading* getSensorReading() = 0;
+	SensorReading* getSensorReading();
 	
 	MagneticSensorReader();
 	// free some resources
 	virtual ~MagneticSensorReader() = 0;
 
 protected:
+
+	virtual void getSensorReading(SensorReading* readingReceiver) = 0;
+
 private:
+
+	SensorReading currentReading;
 };
 
 }

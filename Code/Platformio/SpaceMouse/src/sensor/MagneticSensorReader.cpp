@@ -7,3 +7,9 @@ MagneticSensorReader::MagneticSensorReader() {
 
 MagneticSensorReader::~MagneticSensorReader() {
 }
+
+SensorReading* MagneticSensorReader::getSensorReading() {
+	getSensorReading(&currentReading);
+	
+	return &currentReading;
+}
