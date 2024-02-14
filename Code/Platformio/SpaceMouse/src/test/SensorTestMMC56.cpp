@@ -17,8 +17,15 @@ SensorTestMMC56::~SensorTestMMC56(){
 void SensorTestMMC56::setup() {
     initSerial();
 
-    mmc56SensorReader = MMC56SensorReader();
-    sensorReader = &mmc56SensorReader;
+    pMmc56SensorReader = new MMC56SensorReader();
+    
+    pFilteringDecorator = new SensorReaderFilteringDecorator(
+        getFilterSettings(),
+        pMmc56SensorReader
+    );
+    sensorReader = pFilteringDecorator;
+
+
 
     bool initSuccessful = sensorReader->initSensor(SENSOR_ID);
     if (!initSuccessful) {
@@ -26,6 +33,12 @@ void SensorTestMMC56::setup() {
         while (1) delay(10);
     }
     measurementDurationMillis = sensorReader->getMeasurementDurationMillis();
+}
+
+FilterSettings SensorTestMMC56::getFilterSettings() {
+    AxisFilterSettings axisSettings = AxisFilterSettings(1.0, 1.0, 0.2);
+    
+    return FilterSettings(axisSettings, axisSettings, axisSettings);
 }
 
 long SensorTestMMC56::getMeasurementDurationMillis() {

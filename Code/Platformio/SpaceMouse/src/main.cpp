@@ -14,5 +14,5 @@ void setup(void) {
 
 void loop(void) {
   test.performTest();
-  delay(10);
+  delay(30);
 }

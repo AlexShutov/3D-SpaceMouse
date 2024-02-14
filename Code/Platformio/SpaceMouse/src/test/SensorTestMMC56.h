@@ -1,7 +1,8 @@
 #include <Adafruit_MMC56x3.h>
 #include "sensor/MagneticSensorReader.h"
 #include "sensor/MMC56/MMC56SensorReader.h"
-
+#include "sensor/filtering/SensorReaderFilteringDecorator.h"
+#include "sensor/filtering/FilterSettings.h"
 
 #include "config/hardware_config.h"
 
@@ -30,10 +31,12 @@ public:
 private:
 
     MagneticSensorReader* sensorReader;
-    MMC56SensorReader mmc56SensorReader;
+    MMC56SensorReader* pMmc56SensorReader;
+    SensorReaderFilteringDecorator* pFilteringDecorator;
     long measurementDurationMillis;
 
     void initSerial();
+    FilterSettings getFilterSettings();
 };
 
 }
