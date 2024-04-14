@@ -42,6 +42,14 @@ void SensorReaderFilteringDecorator::calibrateSensor() {
 	pDecoree->calibrateSensor();
 }
 
+SensorReading* SensorReaderFilteringDecorator::getCalibrationOffset() {
+	return pDecoree->getCalibrationOffset();
+}
+
+void SensorReaderFilteringDecorator::setCalibrationOffset(SensorReading& offset) {
+	pDecoree->setCalibrationOffset(offset);
+}
+
 bool SensorReaderFilteringDecorator::initSensor(int sensorId, TwoWire* wire) {
 	return pDecoree->initSensor(sensorId, wire);
 }

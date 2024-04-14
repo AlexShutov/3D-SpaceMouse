@@ -32,7 +32,9 @@ public:
 	 * Perform sensor calibration (TODO)
 	*/
 	virtual void calibrateSensor();
-	
+	virtual SensorReading* getCalibrationOffset();
+	virtual void setCalibrationOffset(SensorReading& offset);
+
 	SensorReaderFilteringDecorator(
 		FilterSettings settings,
 		MagneticSensorReader* pDecoree

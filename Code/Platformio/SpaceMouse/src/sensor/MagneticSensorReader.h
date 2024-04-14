@@ -19,6 +19,8 @@ namespace MagneticSensor {
 
 class MagneticSensorReader {
 
+#define CALIBRATION_READINGS_COUNT 300
+
 private: 	
 public:
 	
@@ -33,23 +35,27 @@ public:
 	virtual long getMeasurementDurationMillis() = 0;
 
 	/**
-	 * Perform sensor calibration (TODO)
+	 * sensor calibration
 	*/
-	virtual void calibrateSensor() = 0;
+	virtual void calibrateSensor();
+	virtual SensorReading* getCalibrationOffset();
+	virtual void setCalibrationOffset(SensorReading& offset);
 
 	SensorReading* getSensorReading();
 	
-	MagneticSensorReader();
+	MagneticSensorReader(bool useCalibration = true);
 	// free some resources
 	virtual ~MagneticSensorReader() = 0;
-
+	
 protected:
 
 	virtual void getSensorReading(SensorReading* readingReceiver) = 0;
+	bool useCalibration;
 
 private:
 
 	SensorReading currentReading;
+	SensorReading calibrationOffset;
 };
 
 }

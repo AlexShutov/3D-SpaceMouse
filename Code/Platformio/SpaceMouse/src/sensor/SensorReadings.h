@@ -19,6 +19,12 @@ struct SensorReading {
 	bool operator!=(SensorReading &op2) {
 		return !this->operator ==(op2);
 	}
+
+	void clear() {
+		x_value = 0;
+		y_value = 0;
+		z_value = 0;
+	}
 };
 
 }

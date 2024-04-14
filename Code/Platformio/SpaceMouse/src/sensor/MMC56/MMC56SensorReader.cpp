@@ -13,14 +13,14 @@
 #include <Adafruit_MMC56x3.h>
 #include "MMC56SensorReader.h"
 
-#define MEASUREMENT_DURATION_MILLIS 100
+#define MEASUREMENT_DURATION_MILLIS 20
 
 extern "C" {
 };
 
 using namespace MagneticSensor;
 
-MMC56SensorReader::MMC56SensorReader() {
+MMC56SensorReader::MMC56SensorReader(bool useCalibration): MagneticSensorReader(useCalibration) {
 }
 
 MMC56SensorReader::~MMC56SensorReader() {
@@ -40,10 +40,6 @@ long MMC56SensorReader::getMeasurementDurationMillis() {
 
 void MMC56SensorReader::shutdownSensor() {
 	driver.reset();
-}
-
-void MMC56SensorReader::calibrateSensor() {
-	// TODO thought to use initial calibration logic from space mouse sketch
 }
 
 void MMC56SensorReader::getSensorReading(SensorReading* readingReceiver) {

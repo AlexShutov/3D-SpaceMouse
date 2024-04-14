@@ -29,15 +29,9 @@ public:
 	virtual void shutdownSensor();
 	virtual long getMeasurementDurationMillis();
 
-	/**
-	 * Perform sensor calibration (TODO)
-	*/
-	virtual void calibrateSensor();
-	
-
 	virtual SensorReading* getSensorReading();
 	
-	TLV493DSensorReader();
+	TLV493DSensorReader(bool useCalibration = true);
 	// free some resources
 	virtual ~TLV493DSensorReader();
 

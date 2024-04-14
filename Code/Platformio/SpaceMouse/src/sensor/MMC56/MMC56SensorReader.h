@@ -29,13 +29,8 @@ public:
 	virtual bool initSensor(int sensorId, TwoWire* wire = 0);
 	virtual void shutdownSensor();
 	virtual long getMeasurementDurationMillis();
-
-	/**
-	 * Perform sensor calibration (TODO)
-	*/
-	virtual void calibrateSensor();
 	
-	MMC56SensorReader();
+	MMC56SensorReader(bool useCalibration = true);
 	// free some resources
 	virtual ~MMC56SensorReader();
 

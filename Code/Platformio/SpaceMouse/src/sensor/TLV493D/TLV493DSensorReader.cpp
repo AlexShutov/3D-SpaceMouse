@@ -17,7 +17,7 @@ extern "C" {
 
 using namespace MagneticSensor;
 
-TLV493DSensorReader::TLV493DSensorReader() {
+TLV493DSensorReader::TLV493DSensorReader(bool useCalibration): MagneticSensorReader(useCalibration){
 }
 
 TLV493DSensorReader::~TLV493DSensorReader() {
